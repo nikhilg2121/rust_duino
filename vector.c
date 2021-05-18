@@ -15,7 +15,7 @@ vector *vector_new()
 {
   vector v;
   v.data = NULL;   //it is a pointer means a memory location it can't be null//here we should create a heap using malloc()
-  v.length = 0;   //correction...v.data=(int*)mallock(sizeof(int);
+  v.length = 0;   //correction...v.data=(int*)mallock(sizeof(int));
   v.capacity = 0; //initially capacity can't be zero because it will have ability to store atleast one element because we are giving the address of first element through v.data
   return &v;     //here we are returning a location of stack memory which will cause dangeling pointer
   //so we should use malloc fuction to create heap in this
@@ -30,7 +30,7 @@ void vector_push(vector *v, int n)
 //after several vector_push capacity will be greater than v.length then further vector push can't be use because at starting condition is applied v.capacity==v.length
  //correction...int new capacity=v.capacity+1;
     
-    int *new_data = (int *)malloc(new_capacity);  //we should  use sizeof(new_capacity)
+    int *new_data = (int *)malloc(new_capacity);  //we should  use (int*)malloc(sizeof(new_capacity));
     assert(new_data != NULL)
 
     for (int i = 0; i < v->length; ++i)
